@@ -16,22 +16,37 @@ var ReactDOM = require('react-dom');
 	Testable
 */
 
-var ProfilePic = React.createClass({
-
+var Link = React.createClass({
+	changeURL: function(){
+		window.location.replace(this.props.href)
+	},
 	render: function() {
-		return (
-			<img src={this.props.imageUrl} style={{height: 100, width:100}} />
+		console.log(this.props);
+		return(
+
+			<span 
+				style={{color:'blue',cursor:'pointer'}}
+				onClick={this.changeURL}>
+				{this.props.children}
+			</span>
 		);
 	}
-
 });
 
 var ProfileLink = React.createClass({
 	render: function() {
 		return (
-			<a href={'https://www.github.com/' + this.props.username}>
+			<Link href={'https://www.github.com/' + this.props.username}>
 				{this.props.username}
-			</a>
+			</Link>
+		);
+	}
+});
+
+var ProfilePic = React.createClass({
+	render: function() {
+		return (
+			<img src={this.props.imageUrl} style={{height: 100, width:100}} />
 		);
 	}
 });
